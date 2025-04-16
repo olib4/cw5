@@ -2,70 +2,46 @@ public class Wydarzenie {
     private String nazwa;
     private String data;
     private String miejsce;
-    private int maxLiczbaMiejsc;
-    private int dostepneMiejsca;
+    private int maxLiczbaMiejsc = 100;
+    private int dostepneMiejsca = 0;
     private double cena;
 
-    public Wydarzenie(String nazwa, String data, String miejsce, double cena) {
-        this.nazwa = nazwa;
-        this.data = data;
-        this.miejsce = miejsce;
-        this.cena = cena;
-        this.maxLiczbaMiejsc = 100;
-        this.dostepneMiejsca = 0;
-    }
-    public String getNazwa() {
-        return nazwa;
-    }
 
-    public void setNazwa(String nazwa) {
-        this.nazwa = nazwa;
-    }
+            public Wydarzenie(String nazwa, double cena) {
+                this.nazwa = nazwa;
+                this.cena = cena;
+            }
 
-    public String getData() {
-        return data;
-    }
+            public Wydarzenie(String nazwa, double cena, String data) {
+                this(nazwa, cena);
+                this.data = data;
+            }
 
-    public void setData(String data) {
-        this.data = data;
-    }
+            public Wydarzenie(String nazwa, double cena, String data, String miejsce) {
+                this(nazwa, cena, data);
+                this.miejsce = miejsce;
+            }
 
-    public String getMiejsce() {
-        return miejsce;
-    }
 
-    public void setMiejsce(String miejsce) {
-        this.miejsce = miejsce;
-    }
+    public String getNazwa() { return nazwa; }
+    public String getData() { return data; }
+    public String getMiejsce() { return miejsce; }
+    public int getMaxLiczbaMiejsc() { return maxLiczbaMiejsc; }
+    public int getDostepneMiejsca() { return dostepneMiejsca; }
+    public double getCena() { return cena; }
 
-    public int getMaxLiczbaMiejsc() {
-        return maxLiczbaMiejsc;
+    public void setCena(double cena) { this.cena = cena; }
+
+    public void zarezerwujMiejsce() {
+        if (dostepneMiejsca < maxLiczbaMiejsc) {
+            dostepneMiejsca++;
+        }
     }
 
-    public void setMaxLiczbaMiejsc(int maxLiczbaMiejsc) {
-        this.maxLiczbaMiejsc = maxLiczbaMiejsc;
+    @Override
+    public String toString() {
+        return "Wydarzenie o nazwie: " + nazwa + ", dnia: " + data + ", miejsce: " + miejsce +
+                ", cena: " + cena + ", dostepnosc miejsc: " + dostepneMiejsca +
+                "/" + maxLiczbaMiejsc;
     }
-
-    public int getDostepneMiejsca() {
-        return dostepneMiejsca;
-    }
-
-    public void setDostepneMiejsca(int dostepneMiejsca) {
-        this.dostepneMiejsca = dostepneMiejsca;
-    }
-
-    public double getCena() {
-        return cena;
-    }
-
-    public void setCena(double cena) {
-        this.cena = cena;
-    }
-
-
-
-
-
-
-
 }
